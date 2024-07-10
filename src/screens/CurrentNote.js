@@ -1,12 +1,15 @@
-import React, {useLayoutEffect} from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import React, { useLayoutEffect, useState } from 'react';
+import { View, Text, Pressable, ScrollView, useWindowDimensions, Modal, Dimensions } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { deleteNote } from '../utils/utility';
-import { CurrentNoteStyles } from '../styles/styles';
+import { deleteNote } from '../utils/noteutility';
+import RenderHtml from 'react-native-render-html';
+import { CurrentNoteStyles, styles } from '../styles/styles';
 
-export default function CurrentNote ({ route,navigation }) {
+export default function CurrentNote({ route, navigation }) {
   const { note } = route.params || {};
-  let newNotes=[];
+  const [modalVisible, setModalVisible] = useState(false);
+  const { width: contentWidth } = useWindowDimensions();
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -18,7 +21,7 @@ export default function CurrentNote ({ route,navigation }) {
     await deleteNote(id, null, navigation);
   };
 
-  if (note===false) {
+  if (!note) {
     return (
       <View style={CurrentNoteStyles.container}>
         <Text style={CurrentNoteStyles.errorText}>No note found</Text>
@@ -28,48 +31,31 @@ export default function CurrentNote ({ route,navigation }) {
 
   return (
     <View style={CurrentNoteStyles.container}>
-      <View>
-      <Text style={CurrentNoteStyles.body}>{note.body}</Text></View>
+      <View style={CurrentNoteStyles.NoteCtn}>
+        <ScrollView style={CurrentNoteStyles.ScrollStyle}>
+          <RenderHtml
+          style={CurrentNoteStyles.body}
+            contentWidth={contentWidth}
+            source={{ html: note.body }}
+          />
+        </ScrollView>
+      </View>
       <Pressable style={CurrentNoteStyles.DeletingNote}>
-      <MaterialCommunityIcons name="trash-can-outline" size={24} color="red" onPress={()=>handleDeleteNote(note.id, null, navigation)}/>
+        <MaterialCommunityIcons
+          name="trash-can-outline"
+          size={24}
+          color="red"
+          onPress={() => handleDeleteNote(note.id)}
+        />
       </Pressable>
       <Pressable style={CurrentNoteStyles.EditingNote}>
-      <MaterialCommunityIcons name="lead-pencil" size={24} color="black" onPress={() => navigation.navigate('Edit Note', { note })}/>
+        <MaterialCommunityIcons
+          name="lead-pencil"
+          size={24}
+          color="black"
+          onPress={() => navigation.navigate('Edit Note', { note })}
+        />
       </Pressable>
     </View>
   );
 }
-
-const styles=StyleSheet.create({
-container:{
-flex:1,
-padding:30,
-justifyContent:'center',
-alignItems:'center',
-marginTop:-480
-},
-title: {
-  fontSize: 24,
-  fontWeight: 'bold',
-  marginBottom: 20,
-},
-body: {
-  fontSize: 16,
-},
-DeletingNote:{
-  backgroundColor:'#dedede',
-    borderRadius:45,
-    padding:13,
-    position:'absolute',
-    bottom:30,
-    left:70
-},
-EditingNote:{
-  backgroundColor:'#dedede',
-    borderRadius:45,
-    padding:13,
-    position:'absolute',
-    bottom:30,
-    right:70
-}
-})

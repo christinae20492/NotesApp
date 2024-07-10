@@ -1,5 +1,12 @@
 {
     "configurations": [
+        
+        {
+            "name": "Attach to packager - Experimental",
+            "request": "attach",
+            "type": "reactnative",
+            "cwd": "${workspaceFolder}"
+        },
         {
             "name": "Run Android",
             "cwd": "${workspaceFolder}",
@@ -8,6 +15,12 @@
             "platform": "android",
             "enableDebug": false,
             "isDynamic": true
+        },
+        {
+            "name": "Attach to packager",
+            "cwd": "${workspaceFolder}",
+            "type": "reactnative",
+            "request": "attach"
         }
     ]
 }

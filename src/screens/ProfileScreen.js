@@ -1,19 +1,25 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
-import { loadProfile, saveProfile } from '../utils/profileStorage';
-import { SimpleLineIcons } from '@expo/vector-icons';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-export default function ProfileScreen({ navigation }) {
-  const handleLogout = () => {
-    navigation.navigate('Login');
-  };
+export default function ProfileScreen() {
+  const [profile, setProfile] = useState({ name: '', email: '' });
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
-      <Text style={styles.label}>Name: John Doe</Text>
-      <Text style={styles.label}>Email: john.doe@example.com</Text>
-      <TouchableOpacity style={styles.LogoutButton}><SimpleLineIcons name="logout" size={24} color="red" onPress={()=>handleLogout()}/></TouchableOpacity>
+      <TextInput
+        style={styles.input}
+        placeholder="Name"
+        value={profile.name}
+        onChangeText={(name) => setProfile({ ...profile, name })}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={profile.email}
+        onChangeText={(email) => setProfile({ ...profile, email })}
+      />
+      <Button title="Save"/>
     </View>
   );
 }
@@ -22,22 +28,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
   },
-  label: {
-    fontSize: 18,
-    marginBottom: 10,
+  input: {
+    borderColor: '#ddd',
+    borderWidth: 1,
+    padding: 8,
+    marginBottom: 16,
+    borderRadius: 5,
   },
-  LogoutButton:{
-    backgroundColor:'#dedede',
-      borderRadius:25,
-      padding:13,
-      alignContent:'center'
-  }
 });
