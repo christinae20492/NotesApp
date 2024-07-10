@@ -10,11 +10,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@aws-amplify/auth": "^6.3.8",
+    "@aws-amplify/storage": "^6.5.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@babel/plugin-transform-export-namespace-from": "^7.24.7",
     "@expo/metro-runtime": "~3.2.1",
     "@notifee/react-native": "^7.8.2",
     "@react-native-async-storage/async-storage": "^1.23.1",
+    "@react-native-community/netinfo": "^11.3.2",
     "@react-native-picker/picker": "2.7.5",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/drawer": "^6.6.15",
@@ -22,6 +25,7 @@
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
     "@types/react": "~18.2.79",
+    "aws-amplify": "^6.4.0",
     "expo": "^51.0.17",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
