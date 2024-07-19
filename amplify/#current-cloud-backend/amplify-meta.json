@@ -1,0 +1,80 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-notesapp-dev-b0b1f-authRole",
+      "UnauthRoleArn": "arn:aws:iam::992382641262:role/amplify-notesapp-dev-b0b1f-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::992382641262:role/amplify-notesapp-dev-b0b1f-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-notesapp-dev-b0b1f-deployment",
+      "UnauthRoleName": "amplify-notesapp-dev-b0b1f-unauthRole",
+      "StackName": "amplify-notesapp-dev-b0b1f",
+      "StackId": "arn:aws:cloudformation:us-east-1:992382641262:stack/amplify-notesapp-dev-b0b1f/a317f040-3ec1-11ef-8c67-0ee8590be0e5",
+      "AmplifyAppId": "d3jay1mi1r69gd"
+    }
+  },
+  "auth": {
+    "notesapp3f575bfd": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notesapp-dev-b0b1f-deployment/amplify-cfn-templates/auth/notesapp3f575bfd-cloudformation-template.json",
+        "logicalId": "authnotesapp3f575bfd"
+      },
+      "lastPushTimeStamp": "2024-07-10T14:18:55.585Z",
+      "output": {
+        "UserPoolId": "us-east-1_p3EV5w7mB",
+        "AppClientIDWeb": "7lnk521idmpffberpn8s70j8h6",
+        "AppClientID": "ee1ma77s45lcpg9091ra2pv0a",
+        "IdentityPoolId": "us-east-1:f595d646-ed8e-4622-b540-d677fecd36cb",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:992382641262:userpool/us-east-1_p3EV5w7mB",
+        "IdentityPoolName": "notesapp3f575bfd_identitypool_3f575bfd__dev",
+        "UserPoolName": "notesapp3f575bfd_userpool_3f575bfd"
+      },
+      "lastPushDirHash": "TqXXCCVk6PsbbhXOAg/dPhQzpys="
+    }
+  },
+  "storage": {
+    "dynamoaaa20291": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notesapp-dev-b0b1f-deployment/amplify-cfn-templates/storage/dynamoaaa20291-cloudformation-template.json",
+        "logicalId": "storagedynamoaaa20291"
+      },
+      "lastPushTimeStamp": "2024-07-10T14:18:55.585Z",
+      "output": {
+        "PartitionKeyName": "column1",
+        "SortKeyName": "name",
+        "SortKeyType": "S",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:992382641262:table/dynamoaaa20291-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:992382641262:table/dynamoaaa20291-dev/stream/2024-07-10T14:17:59.430",
+        "PartitionKeyType": "S",
+        "Name": "dynamoaaa20291-dev"
+      },
+      "lastPushDirHash": "UlNNzo1fj64+THBVzapWgQvKPJM="
+    }
+  }
+}

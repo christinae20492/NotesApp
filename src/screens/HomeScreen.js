@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { View, Text, TextInput, Pressable, FlatList, RefreshControl} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { CurrentNoteStyles, styles, HomeScreenStyles } from '../styles/styles';
+import { styles, HomeScreenStyles } from '../styles/styles';
 import { loadNotes, deleteNote, deleteMultipleNotes, notePress } from '../utils/noteutility';
 import { createFolder, loadFolders } from '../utils/folderutil';
 import { SortPicker } from '../components/sortpicker';
@@ -94,11 +94,11 @@ const handleDeleteNote = async (id) => {
     <View style={styles.MainContainer}>
 
   <View style={styles.OptionsBar}>
-        <Pressable onPress={() => setTextInputVisible(!textInputVisible)}>
-         <AntDesign name="addfolder" size={24} color="grey" style={{padding:5}}/>
-        </Pressable>
         <Pressable onPress={() => setModalVisible(true)}>
           <FontAwesome5 name="sort-amount-up-alt" size={24} color="grey"  style={{padding:5}}/>
+        </Pressable>
+        <Pressable onPress={() => setTextInputVisible(!textInputVisible)}>
+         <AntDesign name="addfolder" size={24} color="grey" style={{padding:5}}/>
         </Pressable>
       </View>
 
@@ -107,7 +107,7 @@ const handleDeleteNote = async (id) => {
           style={HomeScreenStyles.textInput}
           value={inputText}
           onChangeText={setInputText}
-          onSubmitEditing={() => createFolder(inputText, setFolders, setNewFolder)}
+          onSubmitEditing={() => createFolder(inputText, setFolders, setNewFolder, setTextInputVisible)}
         />
       )}
     

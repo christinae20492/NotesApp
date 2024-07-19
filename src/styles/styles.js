@@ -101,11 +101,13 @@ padding:20,
   folderitem:{
     textAlign:'center',
     backgroundColor:'#769ce8',
+    width:width*0.35,
     borderRadius:5,
     padding:15,
     alignItems:'center',
     borderColor:'black',
-    border:2
+    border:2,
+    marginHorizontal:5
   }
 });
 

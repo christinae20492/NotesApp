@@ -1,0 +1,14 @@
+{
+  "resourceName": "dynamoaaa20291",
+  "tableName": "dynamoaaa20291",
+  "partitionKey": {
+    "fieldName": "column1",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "name",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

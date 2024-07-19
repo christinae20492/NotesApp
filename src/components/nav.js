@@ -8,6 +8,8 @@ import ProfileScreen from '../screens/ProfileScreen';
 import CurrentNote from '../screens/CurrentNote';
 import EditNote from '../screens/EditNote';
 import CurrentFolder from '../screens/CurrentFolder';
+import SettingsScreen from '../screens/Settings';
+import SettingsDetail from '../screens/SettingsDetail';
 import { FontAwesome } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
@@ -24,6 +26,8 @@ const TabNavigator = () => {
             iconName = 'home';
           } else if (route.name === 'Profile') {
             iconName = 'user';
+          } else if (route.name === 'Settings') {
+            iconName = 'cog';
           }
 
           return <FontAwesome name={iconName} size={size} color={color} />;
@@ -34,6 +38,7 @@ const TabNavigator = () => {
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{headerShown:false}}/>
       <Tab.Screen name="Profile" component={ProfileScreen} options={{headerShown:false}}/>
+      <Tab.Screen name="Settings" component={SettingsScreen} options={{headerShown:false}}/>
     </Tab.Navigator>
   );
 };
@@ -48,6 +53,8 @@ export const AppNavigator = () => {
         <Stack.Screen name="Current Note" component={CurrentNote} />
         <Stack.Screen name="Current Folder" component={CurrentFolder} />
         <Stack.Screen name="Edit Note" component={EditNote} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="SettingsDetail" component={SettingsDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

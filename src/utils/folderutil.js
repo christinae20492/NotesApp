@@ -17,7 +17,7 @@ export const loadFolders = async () => {
     }
   };
   
-  export const createFolder = async (folderName, setFolders, setNewFolder) => {
+  export const createFolder = async (folderName, setFolders, setNewFolder, setTextInputVisible) => {
     try {
       const existingFolders = await loadFolders();
       const newFolder = { title: folderName, id: idGen(), dateCreated: getCurrentDateTime(), notes: [] };
@@ -26,6 +26,7 @@ export const loadFolders = async () => {
       setFolders(newFolders);
       await AsyncStorage.setItem(FOLDERS_KEY, JSON.stringify(newFolders));
       setNewFolder('');
+      setTextInputVisible(false);
       
       successToast('New folder created!');
     } catch (error) {
